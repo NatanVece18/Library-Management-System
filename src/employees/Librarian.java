@@ -15,10 +15,11 @@ public class Librarian extends Employee{
     public String toString() {
         double bonus = calculateBonus();
         return "Librarian{" +
+                "\nid: " + getId() +
                 "\nname: " + getName() +
                 "\nsalary: " + getSalary() +
                 "\nbonus: " + bonus +
-                "   \ntotal salary: " + (getSalary() + bonus) +
+                "\ntotal salary: " + (getSalary() + bonus) +
                 "\n}";
     }
 

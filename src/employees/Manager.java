@@ -17,6 +17,7 @@ public class Manager extends Employee
         double bonus = calculateBonus();
         String report = generateReport();
         return "Manager{" +
+                "\nid: " + getId() +
                 "\nname: " + getName() +
                 "\nsalary: " + getSalary() +
                 "\nbonus: " + bonus +
