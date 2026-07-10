@@ -45,6 +45,15 @@ public class Book {
         }
     }
 
+    public void returnBook(){
+        if(borrower.getBook() != null && status == BookStatus.BORROWED){
+            setStatus(BookStatus.AVAILABLE);
+            //The book inside borrower (Member class) needs to be null before setting null in this object
+            borrower.setBook(null);
+            setBorrower(null);
+        }
+    }
+
     public void showBookInfo(){
         System.out.println("Book:");
         System.out.println("Title: " + this.title);
