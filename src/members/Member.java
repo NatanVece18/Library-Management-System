@@ -5,14 +5,23 @@ import src.books.Book;
 public class Member {
     private final int id;
     private static int nextId = 1;
-    private String cpf;
+    private final String cpf;
     private String name;
     private Book book;
 
-    public Member(String cpf, String name){
+    public Member(final String cpf, String name){
         this.id = nextId++;
         this.cpf = cpf;
         this.name = name;
+    }
+
+    @Override
+    public String toString() {
+        return "Member{" +
+                "book=" + book +
+                ", name='" + name + '\'' +
+                ", cpf='" + cpf + '\'' +
+                '}';
     }
 
     public void showMemberInfo(){
@@ -33,10 +42,6 @@ public class Member {
 
     public String getCpf() {
         return cpf;
-    }
-
-    public void setCpf(String cpf) {
-        this.cpf = cpf;
     }
 
     public String getName() {

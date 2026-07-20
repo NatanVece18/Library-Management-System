@@ -1,5 +1,5 @@
 package src.employees;
 
 public interface Reportable {
-    String generateReport();
+    public abstract String generateReport();
 }

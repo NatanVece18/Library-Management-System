@@ -1,20 +1,39 @@
 package src.employees;
 
+import java.math.BigDecimal;
+
 public abstract class Employee {
     private final int id;
     private String name;
-    private double salary;
+    private BigDecimal salary;
     private static int nextId = 1;
 
-    public Employee(String name, double salary){
+    public Employee(String name, BigDecimal salary){
         this.id = nextId++;
         this.name = name;
         this.salary = salary;
     }
 
-    public abstract double calculateBonus();
+    public abstract BigDecimal calculateBonus();
 
-    public abstract void showInfo();
+    @Override
+    public String toString() {
+        BigDecimal bonus = calculateBonus();
+        BigDecimal totalSalary = salary.add(bonus);
+        return  getClass().getSimpleName() + "{" +
+                "\nid: " + getId() +
+                "\nname: " + getName() +
+                "\nsalary: " + getSalary() +
+                "\nbonus: " + bonus +
+                "\ntotal salary: " + totalSalary +
+                "\n}";
+    }
+
+    public void showInfo(){
+        System.out.println("=============");
+        System.out.println(toString());
+        System.out.println("=============");
+    }
 
     public int getId() {
         return id;
@@ -28,11 +47,11 @@ public abstract class Employee {
         this.name = name;
     }
 
-    public double getSalary() {
+    public BigDecimal getSalary() {
         return salary;
     }
 
-    public void setSalary(double salary) {
+    public void setSalary(BigDecimal salary){
         this.salary = salary;
     }
 }

@@ -1,32 +1,17 @@
 package src.employees;
 
+import java.math.BigDecimal;
+
 public class Librarian extends Employee{
 
-    public Librarian(String name, double salary){
+    public Librarian(String name, BigDecimal salary){
         super(name, salary);
     }
 
     @Override
-    public double calculateBonus(){
-        return getSalary() * 0.15;
-    }
-
-    @Override
-    public String toString() {
-        double bonus = calculateBonus();
-        return "Librarian{" +
-                "\nid: " + getId() +
-                "\nname: " + getName() +
-                "\nsalary: " + getSalary() +
-                "\nbonus: " + bonus +
-                "\ntotal salary: " + (getSalary() + bonus) +
-                "\n}";
-    }
-
-    @Override
-    public void showInfo(){
-        System.out.println("=============");
-        System.out.println(toString());
-        System.out.println("=============");
+    public BigDecimal calculateBonus(){
+        BigDecimal currentSalary = getSalary();
+        BigDecimal bonusPercentage = new BigDecimal("0.1");
+        return currentSalary.multiply(bonusPercentage);
     }
 }

@@ -1,35 +1,19 @@
 package src.employees;
 
+import java.math.BigDecimal;
+
 public class Manager extends Employee
         implements Reportable{
 
-    public Manager(String name, double salary){
+    public Manager(String name, BigDecimal salary){
         super(name, salary);
     }
 
     @Override
-    public double calculateBonus(){
-        return getSalary() * 0.4;
-    }
-
-    @Override
-    public String toString() {
-        double bonus = calculateBonus();
-        String report = generateReport();
-        return "Manager{" +
-                "\nid: " + getId() +
-                "\nname: " + getName() +
-                "\nsalary: " + getSalary() +
-                "\nbonus: " + bonus +
-                "\ntotal salary: " + (getSalary() + bonus) +
-                "\n}";
-    }
-
-    @Override
-    public void showInfo(){
-        System.out.println("=============");
-        System.out.println(toString());
-        System.out.println("=============");
+    public BigDecimal calculateBonus(){
+        BigDecimal currentSalary = getSalary();
+        BigDecimal bonusPercentage = new BigDecimal("0.4");
+        return currentSalary.multiply(bonusPercentage);
     }
 
     @Override

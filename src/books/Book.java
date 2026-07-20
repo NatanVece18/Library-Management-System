@@ -4,14 +4,14 @@ import src.enums.BookStatus;
 import src.members.Member;
 
 public class Book {
-    private final int ISBN;
+    private final String ISBN;
     private final int id;
     private static int nextId = 1;
     private String title;
     private BookStatus status;
     private Member borrower;
 
-    public Book(final int ISBN, String title){
+    public Book(final String ISBN, String title){
         this.id = nextId++;
         this.ISBN =  ISBN;
         this.title = title;
@@ -21,20 +21,11 @@ public class Book {
     @Override
     public String toString() {
         return "Book{" +
-                "ISBN=" + ISBN +
+                "ISBN='" + ISBN + '\'' +
                 ", title='" + title + '\'' +
                 ", status=" + status +
                 ", borrower=" + borrower +
                 '}';
-    }
-
-    public BookStatus statusReturn(){
-        if(borrower != null){
-            status = BookStatus.BORROWED;
-        }
-        else status = BookStatus.AVAILABLE;
-
-        return status;
     }
 
     public void borrowBook(Member member){
@@ -58,7 +49,7 @@ public class Book {
         System.out.println("Book:");
         System.out.println("Title: " + this.title);
         System.out.println("ISBN: " + this.ISBN);
-        System.out.println("Status: " + statusReturn());
+        System.out.println("Status: " + getStatus());
         String borrowerName = "";
         if(borrower != null){
             borrowerName = borrower.getName();
@@ -67,7 +58,7 @@ public class Book {
         System.out.println("Borrower: " + borrowerName);
     }
 
-    public int getISBN() {
+    public String getISBN() {
         return ISBN;
     }
 
